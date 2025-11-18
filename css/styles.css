@@ -390,17 +390,21 @@ a:hover {
 }
 
 .website-nav-btn {
-  width: 44px;
-  height: 44px;
+  /* make strictly circular: equal width/height, no extra padding */
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+  padding: 0;
   background: rgba(0, 0, 0, 0.6);
   color: white;
   border: 2px solid rgba(255, 255, 255, 0.08);
   cursor: pointer;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
 }
 
 .website-nav-btn:disabled {
@@ -495,16 +499,77 @@ a:hover {
 }
 
 @media (max-width: 880px) {
+  /* Layout: stack hero content and reduce sizes for mobile */
   .hero-inner {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
 
+  /* smaller featured iframe on mobile */
   .video-wrap iframe {
-    height: 220px;
+    height: 200px;
   }
 
+  /* show nav on mobile as a horizontal scrollable row instead of hiding it */
   nav {
-    display: none;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 6px 0;
+  }
+
+  /* reduce header inner padding so nav items remain visible on small screens */
+  .site-header .container {
+    padding: 0 16px;
+  }
+
+  /* reduce hero vertical padding so it fits without feeling huge */
+  .hero {
+    padding: 32px 0;
+  }
+
+  .hero-inner {
+    padding: 32px 0;
+  }
+
+  /* scale down hero text for narrow screens */
+  .hero-left h2 {
+    font-size: 2.2rem;
+    margin-bottom: 16px;
+  }
+
+  .hero-left p {
+    font-size: 1.05rem;
+  }
+
+  /* Galleries become horizontal scroll areas on mobile so cards don't take full width */
+  .grid,
+  .shorts-grid {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* make each gallery card a fixed width so multiple are visible while scrolling */
+  .card {
+    flex: 0 0 72%;
+    max-width: 72%;
+  }
+
+  .short-card {
+    flex: 0 0 46%;
+    max-width: 46%;
+  }
+
+  /* reduce contact form width on small screens */
+  .contact .contact-form,
+  .contact-form {
+    max-width: 100%;
+    padding: 12px;
   }
 }
 
