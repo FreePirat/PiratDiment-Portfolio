@@ -50,6 +50,15 @@ body {
 .brand {
   margin: 8px 0;
   font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 18px;
 }
 
 nav a {
@@ -297,6 +306,7 @@ a:hover {
   padding: 18px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.03);
   margin-top: 18px;
+  text-align: center;
 }
 
 #year {
@@ -484,6 +494,13 @@ a:hover {
   margin: 0;
   font-size: 0.9rem;
   color: #cfcfcf;
+}
+
+/* center footer content specifically without affecting global `.container` */
+.site-footer .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Responsive: make cards more fluid on small screens */
