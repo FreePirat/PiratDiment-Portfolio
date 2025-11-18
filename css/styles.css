@@ -66,6 +66,30 @@ nav a.yt-btn {
   border-radius: 6px;
 }
 
+/* Header-specific hover behavior: change text color only (no glow/lift) */
+.site-header nav a {
+  transition: color 0.18s ease, background-color 0.18s ease, border-color 0.18s ease;
+}
+
+.site-header nav a:hover {
+  color: var(--accent);
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* YouTube channel button hover: different background + border, no glow */
+.site-header nav a.yt-btn {
+  border: 1px solid transparent;
+}
+
+.site-header nav a.yt-btn:hover {
+  background: #ffffff;
+  color: var(--accent);
+  border-color: rgba(255, 77, 79, 0.12);
+  transform: none !important;
+  box-shadow: none !important;
+}
+
 /* global link transition & glow on hover */
 a {
   transition: box-shadow 0.18s ease, transform 0.18s ease, color 0.18s ease;
@@ -393,6 +417,37 @@ a:hover {
   padding: 6px 4px;
   flex: 1 1 auto;
 }
+
+/* Hover/lift/glow effects for important interactive elements */
+.site-header nav a,
+.site-header nav a.yt-btn,
+.contact-form button.cta,
+.website-card,
+.website-nav-btn {
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+  will-change: transform, box-shadow;
+}
+
+/* stronger lift + warm glow for primary nav and CTA */
+.site-header nav a:hover,
+.site-header nav a.yt-btn:hover,
+.contact-form button.cta:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 50px rgba(255, 77, 79, 0.18), 0 0 28px rgba(255, 77, 79, 0.06) inset;
+}
+
+/* website cards: subtle cool glow on hover */
+.website-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 50px rgba(58, 160, 255, 0.12), 0 0 30px rgba(58, 160, 255, 0.045) inset;
+}
+
+/* arrows/buttons for the websites scroll */
+.website-nav-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.35), 0 0 18px rgba(255, 255, 255, 0.03) inset;
+}
+
 
 .website-card {
   flex: 0 0 280px; /* card width on desktop */
