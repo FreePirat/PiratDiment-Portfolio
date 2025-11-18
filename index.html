@@ -10,7 +10,49 @@
 <body>
   <header class="site-header">
     <div class="container">
-      <h1 class="brand">PiratDiment</h1>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <!-- SEO: primary meta -->
+  <meta name="description" content="PiratDiment — Video editor showcasing YouTube videos, shorts and editing work. Available for freelance editing, color grading, and motion graphics.">
+  <meta name="keywords" content="PiratDiment, video editor, YouTube editor, video editing, shorts, showreel">
+  <link rel="canonical" href="https://freepirat.github.io/PiratDiment-Portfolio/">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="PiratDiment — YouTube Editing Portfolio">
+  <meta property="og:description" content="Showcase of video editing work and selected videos from the PiratDiment YouTube channel.">
+  <meta property="og:image" content="https://img.youtube.com/vi/JVaNEmt5ubc/hqdefault.jpg">
+
+  <!-- Twitter card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PiratDiment — YouTube Editing Portfolio">
+  <meta name="twitter:description" content="Showcase of video editing work and selected videos from the PiratDiment YouTube channel.">
+  <meta name="twitter:image" content="https://img.youtube.com/vi/JVaNEmt5ubc/hqdefault.jpg">
+
+  <!-- Structured data: Organization + link to YouTube channel; update url to your published site URL -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "PiratDiment",
+    "url": "https://freepirat.github.io/PiratDiment-Portfolio/",
+    "sameAs": [
+      "https://www.youtube.com/@PiratDiment"
+    ]
+  }
+  </script>
+
+  <!-- Optional: VideoObject for the featured video (helps indexing of videos); update fields as needed -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": "Featured edit — PiratDiment",
+    "description": "Featured video from the PiratDiment channel.",
+    "thumbnailUrl": "https://img.youtube.com/vi/JVaNEmt5ubc/hqdefault.jpg",
+    "contentUrl": "https://www.youtube.com/watch?v=JVaNEmt5ubc",
+    "embedUrl": "https://www.youtube.com/embed/JVaNEmt5ubc"
+  }
+  </script>
       <nav>
         <a href="#gallery">Gallery</a>
         <a href="#about">About</a>

@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://freepirat.github.io/PiratDiment-Portfolio/sitemap.xml
+
+# If you want to temporarily block indexing during development, use:
+# Disallow: /
