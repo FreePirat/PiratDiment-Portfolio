@@ -141,7 +141,111 @@
         </div>
       </form>
     </section>
+
+    <section class="websites-section" aria-label="Other websites">
+      <button id="prevWebsite" class="website-nav-btn" aria-label="Previous website">‹</button>
+
+      <div class="websites-scroll" id="websitesScroll" role="list">
+        <article class="website-card" role="listitem" onclick="window.open('https://freepirat.github.io/portfolio/', '_blank')">
+          <div class="website-image"><img src="Portfolio.png" alt="Developer Portfolio"></div>
+          <div class="website-content">
+            <h3>Developer Portfolio</h3>
+            <p>Displays my background in programming</p>
+          </div>
+        </article>
+
+        <article class="website-card" role="listitem" onclick="window.open('https://freepirat.github.io/Tiermaker2/', '_blank')">
+          <div class="website-image"><img src="TierMaker.png" alt="Tiermaker2"></div>
+          <div class="website-content">
+            <h3>TierMaker2</h3>
+            <p>Allows users to create and share tier lists for various topics.</p>
+          </div>
+        </article>
+
+        <article class="website-card" role="listitem" onclick="window.open('https://freepirat.github.io/ThemeTussle/', '_blank')">
+          <div class="website-image"><img src="ThemeTussle.png" alt="ThemeTussle"></div>
+          <div class="website-content">
+            <h3>ThemeTussle</h3>
+            <p>This is a website to give more information and details on the fighting game I've created, Theme Tussle.</p>
+          </div>
+        </article>
+
+          <article class="website-card" role="listitem" onclick="window.open('https://freepirat.github.io/FunWithGambling/', '_blank')">
+            <div class="website-image"><img src="FunWithGambling.png" alt="FunWithGambling"></div>
+            <div class="website-content">
+              <h3>FunWithGambling</h3>
+              <p>A website with small gambling minigames</p>
+            </div>
+          </article>
+      </div>
+
+      <button id="nextWebsite" class="website-nav-btn" aria-label="Next website">›</button>
+    </section>
+
   </main>
+
+  <script>
+  (function () {
+    const scrollEl = document.getElementById('websitesScroll');
+    const prevBtn = document.getElementById('prevWebsite');
+    const nextBtn = document.getElementById('nextWebsite');
+
+    if (!scrollEl || !prevBtn || !nextBtn) return;
+
+    const cards = Array.from(scrollEl.querySelectorAll('.website-card'));
+    const total = cards.length;
+    let currentIndex = 0;
+    let scrollTimeout = null;
+
+    function updateButtonStates() {
+      prevBtn.disabled = currentIndex <= 0;
+      nextBtn.disabled = currentIndex >= total - 1;
+    }
+
+    function scrollToIndex(index) {
+      if (index < 0) index = 0;
+      if (index > total - 1) index = total - 1;
+      const card = cards[index];
+      const left = card.offsetLeft - (scrollEl.offsetWidth - card.offsetWidth) / 2;
+      scrollEl.scrollTo({ left, behavior: 'smooth' });
+      currentIndex = index;
+      updateButtonStates();
+    }
+
+    prevBtn.addEventListener('click', () => scrollToIndex(currentIndex - 1));
+    nextBtn.addEventListener('click', () => scrollToIndex(currentIndex + 1));
+
+    scrollEl.addEventListener('scroll', () => {
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        // compute index by finding which card is closest to center
+        const center = scrollEl.scrollLeft + scrollEl.offsetWidth / 2;
+        let closest = 0;
+        let closestDist = Infinity;
+        cards.forEach((card, i) => {
+          const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+          const dist = Math.abs(center - cardCenter);
+          if (dist < closestDist) {
+            closestDist = dist;
+            closest = i;
+          }
+        });
+        if (closest !== currentIndex) {
+          currentIndex = closest;
+          updateButtonStates();
+        }
+      }, 80);
+    });
+
+    updateButtonStates();
+
+    scrollEl.tabIndex = 0;
+    scrollEl.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') scrollToIndex(currentIndex - 1);
+      if (e.key === 'ArrowRight') scrollToIndex(currentIndex + 1);
+    });
+  })();
+  </script>
 
   <footer class="site-footer">
     <div class="container">
