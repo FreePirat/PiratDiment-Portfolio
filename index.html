@@ -187,7 +187,6 @@
     </section>
 
     <section class="websites-section" aria-label="Other websites">
-      <button id="prevWebsite" class="website-nav-btn" aria-label="Previous website">‹</button>
 
       <div class="websites-scroll" id="websitesScroll" role="list">
         <article class="website-card" role="listitem" onclick="window.open('https://freepirat.github.io/portfolio/', '_blank')">
@@ -222,8 +221,6 @@
             </div>
           </article>
       </div>
-
-      <button id="nextWebsite" class="website-nav-btn" aria-label="Next website">›</button>
     </section>
 
   </main>
@@ -231,20 +228,11 @@
   <script>
   (function () {
     const scrollEl = document.getElementById('websitesScroll');
-    const prevBtn = document.getElementById('prevWebsite');
-    const nextBtn = document.getElementById('nextWebsite');
-
-    if (!scrollEl || !prevBtn || !nextBtn) return;
 
     const cards = Array.from(scrollEl.querySelectorAll('.website-card'));
     const total = cards.length;
     let currentIndex = 0;
     let scrollTimeout = null;
-
-    function updateButtonStates() {
-      prevBtn.disabled = currentIndex <= 0;
-      nextBtn.disabled = currentIndex >= total - 1;
-    }
 
     function scrollToIndex(index) {
       if (index < 0) index = 0;
@@ -253,11 +241,8 @@
       const left = card.offsetLeft - (scrollEl.offsetWidth - card.offsetWidth) / 2;
       scrollEl.scrollTo({ left, behavior: 'smooth' });
       currentIndex = index;
-      updateButtonStates();
     }
 
-    prevBtn.addEventListener('click', () => scrollToIndex(currentIndex - 1));
-    nextBtn.addEventListener('click', () => scrollToIndex(currentIndex + 1));
 
     scrollEl.addEventListener('scroll', () => {
       if (scrollTimeout) clearTimeout(scrollTimeout);
@@ -274,19 +259,7 @@
             closest = i;
           }
         });
-        if (closest !== currentIndex) {
-          currentIndex = closest;
-          updateButtonStates();
-        }
       }, 80);
-    });
-
-    updateButtonStates();
-
-    scrollEl.tabIndex = 0;
-    scrollEl.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') scrollToIndex(currentIndex - 1);
-      if (e.key === 'ArrowRight') scrollToIndex(currentIndex + 1);
     });
   })();
   </script>
